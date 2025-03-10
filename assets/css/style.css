@@ -14,8 +14,8 @@ header{
     z-index: 99;
 }
 main{
-    padding-top: 15px;
-    padding-bottom: 15px;
+    /* padding-top: 15px;
+    padding-bottom: 15px; */
 }
 .navbar {
     padding-top: 0px;
@@ -27,5 +27,27 @@ main{
     padding: 2px 0;
 }
 .home-banner{
-    background-image: ;
+    background-image: url(../images/home-banner.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.home-title{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 25%;
+}
+
+.btn-get-started{
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    background-color: #157e7a;
+    color: #fff;
+    padding: 15px 25px;
+    font-size: 25px;
+    box-shadow: 0px 0px 10px 2px #005a56;
+    text-decoration: none;
 }
