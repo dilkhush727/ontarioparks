@@ -6,6 +6,6 @@ class Auth extends CI_Controller {
 	public function signup()
 	{
 		$data['content'] = 'signup';
-		$this->load->view('biz/_layout', $data);
+		$this->load->view('biz/_layout-plain', $data);
 	}
 }
