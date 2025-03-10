@@ -9,7 +9,7 @@
 
 <body>
     <?php $this->load->view('biz/components/header'); ?>
-    <main class="container">
+    <main>
         <?php $this->load->view($content); ?>
     </main>
     <?php $this->load->view('biz/components/footer'); ?>
