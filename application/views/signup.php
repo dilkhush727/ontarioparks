@@ -1,26 +1,32 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-<div class="container-fluid home-banner">
+<div class="container-fluid">
 	<div class="hero-section p-2 rounded position-relative">
 		<div class="row align-items-center">
-			<div class="col-md-6">
-				<img src="../assets/images/Algonquin-Park-Backcountry-Camping.jpg" class="img-fluid mb-5">
-			</div>
-			<div class="col-md-6">
-			<!-- http://localhost/IXD-5105-0NC/ontarioparks/index.php/auth -->
-				<h1>Sign Up</h1>
-				<form action="">
+			
+			<div style="text-align: center;" class="col-md-6 justify-content-center ">
+			<!-- http://localhost/IXD-5105-0NC/ontarioparks/index.php/auth/signup -->
+				<h1>Hi Camper!</h1>
+				<p>Let’s get to know you</p>
+				<form class="auth-form" action="">
 				<input type="text" id="fname" name="fname" placeholder="First Name"><br><br>
 				<input type="email" id="email" name="email" placeholder="Email"><br><br>
 			    <input type="phone" id="phone" name="phone" placeholder="Phone"><br><br>
 				</form>
+				<button type="submit" class="btn rounded-pill btn-team">Next</button>
 				<p>or</p>
-				<p>sign in with</p> <img src="../assets/images/google.png" alt="">
+				<div class="d-flex flex-row align-items-center justify-content-center " >
+				<span>sign in with</span>&nbsp;<img src="<?=base_url(); ?>assets/images/google.png" alt=""> </div>
 				<p>or</p>
 				<p>Continue as Guest</p>
-				<img src="../assets/images/arrow.png" alt="">
-				<i class="fa-solid fa-circle-arrow-right"></i>
+				<img src="<?=base_url(); ?>assets/images/arrow.png" alt="">
+				
+				<i class="fa fa-arrow-right icon-circle"></i>
+				
 			</div>
+		
 		</div>
+		<img src="<?=base_url(); ?>assets/images/sloth.png" alt="">
 	</div>
+	
 </div>
