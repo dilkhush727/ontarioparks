@@ -8,6 +8,7 @@ class Auth extends CI_Controller {
 		$data['content'] = 'signup';
 		$this->load->view('biz/_layout-plain', $data);
 	}
+	
 	public function signin()
 	{
 		$data['content'] = 'signin';
