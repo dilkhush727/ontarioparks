@@ -21,7 +21,9 @@
 				<p>or</p>
 				<p>sign in with</p> <a href="https://accounts.google.com/signin" target="_blank"><img src="../assets/images/google.png" alt="Google Logo"></a>
 				<p>or</p>
-				<p>Continue as Guest</p>
+				<p>
+				<a href="https://accounts.google.com/signin" target="_blank">Continue as guest</a>
+				</p>
 				
 			</div>
 		</div>
