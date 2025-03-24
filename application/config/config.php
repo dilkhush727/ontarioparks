@@ -23,6 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
+function pr($array){echo "<pre>";return print_r($array);}
+
 $config['base_url'] = 'http://localhost/humber/IXD-5105-0NC/ontarioparks/';
 
 /*
