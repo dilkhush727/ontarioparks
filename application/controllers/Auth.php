@@ -31,7 +31,7 @@ class Auth extends CI_Controller {
 	public function signin()
 	{
 		$data['content'] = 'signin';
-		$this->load->view('biz/_layout-plain', $data);
+		$this->load->view('_layout-plain', $data);
 	}
 
 	
@@ -39,7 +39,7 @@ class Auth extends CI_Controller {
 	// public function signup()
 	// {
 	// 	$data['content'] = 'signup';
-	// 	$this->load->view('biz/_layout-plain', $data);
+	// 	$this->load->view('_layout-plain', $data);
 	// }
 
 	public function signup_request()
@@ -52,7 +52,7 @@ class Auth extends CI_Controller {
 		if($this->form_validation->run() == false)
 		{
 			$data["content"] = "signup";
-			$this->load->view('biz/_layout-plain', $data);
+			$this->load->view('_layout-plain', $data);
 		}else{
 			$name     = $this->input->post('name');
 			$email    = $this->input->post('email');
