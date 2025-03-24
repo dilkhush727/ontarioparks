@@ -5,7 +5,7 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
-		$data['content'] = 'biz/home';
-		$this->load->view('biz/_layout-plain', $data);
+		$data['content'] = 'home';
+		$this->load->view('_layout-plain', $data);
 	}
 }

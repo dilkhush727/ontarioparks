@@ -5,13 +5,13 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="googlebot" content="noindex">
 
-<?php $this->load->view('biz/components/head'); ?>
+<?php $this->load->view('components/head'); ?>
 
 <body>
     <main>
         <?php $this->load->view($content); ?>
     </main>
-    <?php $this->load->view('biz/components/footer'); ?>
+    <?php $this->load->view('components/footer'); ?>
 </body>
 
 </html>

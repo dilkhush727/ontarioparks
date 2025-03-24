@@ -15,8 +15,17 @@ class Auth extends CI_Controller {
 		if (userData()) {
 			redirect(base_url('dashboard'));
 		}
-		$data["content"] = "biz/auth/login";
-		$this->load->view('biz/_layout_header', $data);
+		$data["content"] = "auth/signin";
+		$this->load->view('_layout-plain', $data);
+	}
+
+	public function signup()
+	{
+		if (userData()) {
+			redirect(base_url('dashboard'));
+		}
+		$data["content"] = "auth/signup";
+		$this->load->view('_layout-plain', $data);
 	}
 
 	public function signin()
@@ -33,7 +42,7 @@ class Auth extends CI_Controller {
 	// 	$this->load->view('biz/_layout-plain', $data);
 	// }
 
-	public function signup()
+	public function signup_request()
 	{
 		$this->form_validation->set_rules('name', 'Name', 'trim|required');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
