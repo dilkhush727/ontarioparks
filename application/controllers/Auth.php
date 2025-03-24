@@ -30,7 +30,7 @@ class Auth extends CI_Controller {
 
 	public function signin()
 	{
-		$data['content'] = 'signin';
+		$data['content'] = 'auth/signin';
 		$this->load->view('_layout-plain', $data);
 	}
 
