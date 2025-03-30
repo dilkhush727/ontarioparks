@@ -19,14 +19,14 @@ class Auth extends CI_Controller {
 		$this->load->view('_layout-plain', $data);
 	}
 
-	public function signup()
-	{
-		if (userData()) {
-			redirect(base_url('dashboard'));
-		}
-		$data["content"] = "auth/signup";
-		$this->load->view('_layout-plain', $data);
-	}
+	// public function signup()
+	// {
+	// 	if (userData()) {
+	// 		redirect(base_url('dashboard'));
+	// 	}
+	// 	$data["content"] = "auth/signup";
+	// 	$this->load->view('_layout-plain', $data);
+	// }
 
 	public function signin()
 	{
@@ -42,37 +42,50 @@ class Auth extends CI_Controller {
 	// 	$this->load->view('_layout-plain', $data);
 	// }
 
-	public function signup_request()
+	public function signup()
 	{
-		$this->form_validation->set_rules('name', 'Name', 'trim|required');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
-		$this->form_validation->set_rules('password','Password','trim|required|min_length[4]|max_length[40]');
-		$this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|matches[password]');
 
-		if($this->form_validation->run() == false)
-		{
-			$data["content"] = "signup";
-			$this->load->view('_layout-plain', $data);
-		}else{
-			$name     = $this->input->post('name');
-			$email    = $this->input->post('email');
-			$password = $this->input->post('password');
+		if ($this->input->post('email')) {
+			
+			$this->form_validation->set_rules('f_name', 'Name', 'trim|required');
+			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
+			$this->form_validation->set_rules('password','Password','trim|required|min_length[4]|max_length[40]');
+			$this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|matches[password]');
 
-			$temp_data = $this->auth_model->reigster($name,$email,$password);
 
-			if($temp_data == 0){
-				set_message("error", "Something went wrong");
-				redirect(base_url('signup'));
+			if($this->form_validation->run() == false)
+			{
+				
+			echo "OK";die;
+				$data["content"] = "signup";
+				$this->load->view('_layout-plain', $data);
 			}else{
-				$insertedId = $this->db->insert_id();
 				
-				// Create User Details
-				$userDetailsData = array('user_id' => $insertedId,'ip' => $this->input->ip_address());
-				$this->db->insert("user_details", $userDetailsData);
-				
-				set_message("success", "Account Created");
-				redirect(base_url('registerd'));
+			echo "No";die;
+				$name     = $this->input->post('name');
+				$email    = $this->input->post('email');
+				$password = $this->input->post('password');
+
+				$temp_data = $this->auth_model->reigster($name,$email,$password);
+
+				if($temp_data == 0){
+					set_message("error", "Something went wrong");
+					redirect(base_url('signup'));
+				}else{
+					$insertedId = $this->db->insert_id();
+					
+					// Create User Details
+					$userDetailsData = array('user_id' => $insertedId,'ip' => $this->input->ip_address());
+					$this->db->insert("user_details", $userDetailsData);
+					
+					set_message("success", "Account Created");
+					redirect(base_url('registerd'));
+				}
 			}
+
+		}else{
+			$data['content'] = 'auth/signup';
+			$this->load->view('_layout-plain', $data);
 		}
 	}
 }
