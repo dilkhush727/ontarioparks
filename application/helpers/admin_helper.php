@@ -26,7 +26,7 @@ if (!function_exists('userData')) {
         if (!empty($CI->session->userdata('login_user'))) {
             $id = $CI->session->userdata('login_user')['id'];
             $email = $CI->session->userdata('login_user')['email'];
-            return  $CI->db->select('users.*, user_details.*')->where('users.id',$id)->where('users.email',$email)->join('user_details', 'user_details.user_id = users.id')->get('users')->row();
+            return  $CI->db->where('id',$id)->where('email',$email)->get('user')->row();
         }
     }
 }
@@ -114,7 +114,7 @@ if (!function_exists('subDomainUrl')) {
     function subDomainUrl(){
         $CI     = &get_instance();
         $userId = userData()->id;
-        $query =  $CI->db->where('id', $userId)->get('users')->row();
+        $query =  $CI->db->where('id', $userId)->get('user')->row();
         $subDomainUrl = 'https://'.$query->account_name.'.eazedesk.com';
         return $subDomainUrl;
     }

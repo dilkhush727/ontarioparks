@@ -13,6 +13,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 
+/**
+ * Used for phpass
+ */
+define('PHPASS_HASH_STRENGTH', 8);
+define('PHPASS_HASH_PORTABLE', false);
+
+/*
+
 /*
 |--------------------------------------------------------------------------
 | File and Directory Modes

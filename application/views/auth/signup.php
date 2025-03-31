@@ -4,30 +4,44 @@
 	<div class="hero-section p-2 rounded position-relative">
 		<div class="row align-items-center">
 			
-			<div class="col-md-6 text-center m-auto">
-				
-				<h1>Hi Camper!</h1>
-				<p>Let's get to know you</p>
+			<div class="col-md-6 m-auto">
 
-				<form method="post" class="auth-form" action="<?=base_url('auth/signup')?>">
+				<div class="text-center">
+					<h1>Hi Camper!</h1>
+					<p>Let's get to know you</p>
+				</div>
+
+				<form method="post" class="auth-form" action="<?= base_url('auth/signup') ?>">
 					<div>
-						<input type="text" name="f_name" placeholder="First Name" required>
+						<input type="text" name="f_name" placeholder="First Name" value="<?= set_value('f_name'); ?>" required>
+						<?= form_error('f_name', '<div class="mb-2"><span class="text-danger">', '</span></div>'); ?>
 					</div>
-					
+
 					<div>
-						<input type="email" name="email" placeholder="Email" required>
+						<input type="email" name="email" placeholder="Email" value="<?= set_value('email'); ?>" required>
+						<?= form_error('email', '<div class="mb-2"><span class="text-danger">', '</span></div>'); ?>
 					</div>
+
 					<div>
 						<input type="password" name="password" placeholder="Password" required>
+						<?= form_error('password', '<div class="mb-2"><span class="text-danger">', '</span></div>'); ?>
 					</div>
+
 					<div>
 						<input type="password" name="cpassword" placeholder="Confirm Password" required>
+						<?= form_error('cpassword', '<div class="mb-2"><span class="text-danger">', '</span></div>'); ?>
 					</div>
+
 					<div>
-						<input type="phone" name="phone" placeholder="Phone" required>
+						<input type="text" name="phone" placeholder="Phone" value="<?= set_value('phone'); ?>" required>
+						<?= form_error('phone', '<div class="mb-2"><span class="text-danger">', '</span></div>'); ?>
 					</div>
-					<button type="submit" class="btn rounded-pill btn-team">Next</button>
+
+					<div class="text-center m-2">
+						<button type="submit" class="btn rounded-pill btn-theme mb-3">Next</button>
+					</div>
 				</form>
+
 
 				<div class="">
 					<p>Already have an account?

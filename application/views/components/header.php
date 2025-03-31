@@ -19,8 +19,30 @@
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:;" onclick="alert('Coming Soon...')">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('logout'); ?>">Sign Out</a>
+                    </li>
                 </ul>
             </div>
         </nav>
     </div>
 </header>
+
+<nav id="nav-footer">
+    <a href="<?=base_url(); ?>">
+        <i class="fa fa-home"></i>
+        <span>Home</span>
+    </a>
+    <a href="#">
+        <i class="fa fa-map"></i>
+        <span>Navigate</span>
+    </a>
+    <a href="#">
+        <i class="fa fa-compass"></i>
+        <span>Gear Guide</span>
+    </a>
+    <a href="#">
+        <i class="fa fa-comments"></i>
+        <span>Community</span>   
+    </a>
+</nav>
