@@ -108,10 +108,11 @@ class Auth extends CI_Controller {
 				
 			// echo "No";die;
 				$f_name     = $this->input->post('f_name');
+				$l_name     = $this->input->post('l_name');
 				$email    = $this->input->post('email');
 				$password = $this->input->post('password');
 
-				$temp_data = $this->auth_model->reigster($f_name,$email,$password);
+				$temp_data = $this->auth_model->reigster($f_name,$l_name,$email,$password);
 
 				if($temp_data == 0){
 					set_message("error", "Something went wrong");

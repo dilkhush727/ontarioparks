@@ -16,6 +16,10 @@
 						<input type="text" name="f_name" placeholder="First Name" value="<?= set_value('f_name'); ?>" required>
 						<?= form_error('f_name', '<div class="mb-2"><span class="text-danger">', '</span></div>'); ?>
 					</div>
+					<div>
+						<input type="text" name="l_name" placeholder="Last Name" value="<?= set_value('l_name'); ?>" required>
+						<?= form_error('l_name', '<div class="mb-2"><span class="text-danger">', '</span></div>'); ?>
+					</div>
 
 					<div>
 						<input type="email" name="email" placeholder="Email" value="<?= set_value('email'); ?>" required>
