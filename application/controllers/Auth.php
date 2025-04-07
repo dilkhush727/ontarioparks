@@ -94,6 +94,8 @@ class Auth extends CI_Controller {
 			$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[user.email]');
 			$this->form_validation->set_rules('password','Password','trim|required|min_length[4]|max_length[40]');
 			$this->form_validation->set_rules('cpassword', 'Confirm Password', 'required|matches[password]');
+			$this->form_validation->set_rules('phone', 'trim|required|is_unique[user.phone]');
+
 
 
 			// pr('qwef');die;
@@ -111,8 +113,9 @@ class Auth extends CI_Controller {
 				$l_name     = $this->input->post('l_name');
 				$email    = $this->input->post('email');
 				$password = $this->input->post('password');
+				$tel = $this->input->post('phone');
 
-				$temp_data = $this->auth_model->reigster($f_name,$l_name,$email,$password);
+				$temp_data = $this->auth_model->reigster($f_name,$l_name,$email,$password, $tel);
 
 				if($temp_data == 0){
 					set_message("error", "Something went wrong");

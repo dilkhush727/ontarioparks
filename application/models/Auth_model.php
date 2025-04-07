@@ -13,7 +13,7 @@ class Auth_model extends CI_Model {
 		}
 	}
 
-	public function reigster($f_name, $l_name, $email, $password)
+	public function reigster($f_name, $l_name, $email, $password, $tel)
 	{
 		$password = app_hasher()->HashPassword($password);
 
@@ -23,7 +23,8 @@ class Auth_model extends CI_Model {
 			"f_name"    => $f_name,
 			"l_name"    => $l_name,
 			"email"    => $email,
-			"password" => $password
+			"password" => $password,
+			"phone" => $tel
 		);
 		$this->db->insert("user", $userData);
 
