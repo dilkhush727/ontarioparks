@@ -49,16 +49,16 @@
 			</div> -->
 			<div class="col-lg-12 col-md-12">
 				<div class="form-wizard">
-					<form action="" method="post" role="form">
-						<div class="form-wizard-header">
+					<form action="<?=base_url('onboarding')?>" method="post" role="form" id="bookingForm">
+						<!-- <div class="form-wizard-header">
 							<ul class="list-unstyled form-wizard-steps clearfix">
 								<li class="active"><span>1</span></li>
 								<li><span>2</span></li>
 								<li><span>3</span></li>
 								<li><span>4</span></li>
 							</ul>
-						</div>
-						<fieldset class="wizard-fieldset show">
+						</div> -->
+						<fieldset class="wizard-fieldset mt-5 show">
 							<h2 class="text-center">Is this Your First Time Camping?</h2>
 							<div class="form-group radio-flex">
 								<div>
@@ -66,48 +66,42 @@
 								</div>
 								<div>
 									<div class="wizard-form-radio mb-3">
-										<input name="radio-name" id="radio1" type="radio" checked>
+										<input name="onboarding" id="radio1" type="radio" value="1" checked>
 										<label for="radio1">Yes</label>
 									</div>
 									<div class="wizard-form-radio">
-										<input name="radio-name" id="radio2" type="radio">
+										<input name="onboarding" id="radio2" type="radio" value="0">
 										<label for="radio2">No</label>
 									</div>
 								</div>
 							</div>
-							<div class="form-group clearfix">
-								<a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+							<div class="form-group clearfix d-flex justify-content-center">
+								<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
 							</div>
 						</fieldset>	
-						<fieldset class="wizard-fieldset">
-							<h5>Account Information</h5>
+						<fieldset class="wizard-fieldset mt-5">
+							<h2 class="text-center">Add Your Reservation Details</h2>
 							<div class="form-group">
-								<input type="email" class="form-control wizard-required" id="email">
-								<label for="email" class="wizard-form-text-label">Email*</label>
+								<input type="date" class="form-control wizard-required" id="date" name="date" value="<?php echo date('Y-m-d'); ?>">
+								<label for="date" class="wizard-form-text-label label-clicked">Date</label>
 								<div class="wizard-form-error"></div>
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control wizard-required" id="username">
-								<label for="username" class="wizard-form-text-label">User Name*</label>
+								<input type="text" name="park" class="form-control wizard-required" id="park">
+								<label for="park" class="wizard-form-text-label">Park</label>
 								<div class="wizard-form-error"></div>
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control wizard-required" id="pwd">
-								<label for="pwd" class="wizard-form-text-label">Password*</label>
-								<div class="wizard-form-error"></div>
-								<span class="wizard-password-eye"><i class="far fa-eye"></i></span>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control wizard-required" id="cpwd">
-								<label for="cpwd" class="wizard-form-text-label">Confirm Password*</label>
+								<input type="time" name="time" class="form-control wizard-required" id="time" value="<?php echo date('h:i'); ?>">
+								<label for="time" class="wizard-form-text-label label-clicked">Time</label>
 								<div class="wizard-form-error"></div>
 							</div>
-							<div class="form-group clearfix">
-								<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
-								<a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+							<div class="form-group clearfix d-flex justify-content-center gap-3">
+								<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
+								<a href="javascript:;" class="form-wizard-submit float-right" id="submitBooking"><i class="fa fa-check"></i></a>
 							</div>
 						</fieldset>	
-						<fieldset class="wizard-fieldset">
+						<!-- <fieldset class="wizard-fieldset">
 							<h5>Bank Information</h5>
 							<div class="form-group">
 								<input type="text" class="form-control wizard-required" id="bname">
@@ -261,10 +255,18 @@
 								<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
 								<a href="javascript:;" class="form-wizard-submit float-right">Submit</a>
 							</div>
-						</fieldset>	
+						</fieldset>	 -->
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+<script>
+	$(document).ready(function(){
+		$("#submitBooking").on("click", function(){
+			$("#bookingForm").submit();
+		});
+	});
+</script>

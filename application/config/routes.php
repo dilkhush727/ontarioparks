@@ -56,3 +56,6 @@ $route['verifyEmail/(:any)'] = 'auth/verification/$1';
 
 $route['contact-us']             = 'Frontend/contactUs';
 // $route['emailUnsubscribe']      = 'Frontend/emailUnsubscribe';
+
+$route['onboarding'] = 'users/onBoarding';
+// $route['addBooking'] = 'booking/addBooking';

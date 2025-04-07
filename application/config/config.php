@@ -24,6 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
+date_default_timezone_set('America/Toronto');
+
 function pr($array){echo "<pre>";return print_r($array);}
 
 $config['base_url'] = 'http://localhost/humber/IXD-5105-0NC/ontarioparks/';

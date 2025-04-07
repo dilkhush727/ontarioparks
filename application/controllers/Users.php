@@ -129,4 +129,71 @@ class Users extends MY_Controller {
 		$this->image_lib->clear();
 	}
 
+	public function onBoarding(){
+
+		if (!empty($this->input->post())) {
+			$userId = userData()->id;
+
+			$this->form_validation->set_rules('date', 'Date', 'required');
+			$this->form_validation->set_rules('time', 'Time', 'required');
+			$this->form_validation->set_rules('park', 'Park', 'required');
+
+			if($this->form_validation->run() == false){
+				$data["content"] = "get-started";
+				$this->load->view('_layout', $data);
+			}else{
+
+				$status = $this->input->post('onboarding');
+
+				$userDataOnboarding = array(
+					'status' => $status,
+					'onboarding' => 1
+				);
+
+				
+
+				// pr($status);
+
+				// pr($data);die;
+
+				$insertOnboarding = $this->db->where('id', $userId)->update('user', $userDataOnboarding);
+
+
+
+				if(!empty($this->input->post('date') && $this->input->post('park') && $this->input->post('time'))){
+				
+					$dataBooking = array(
+						'u_id'  => $userId,
+						'date'  => $this->input->post('date'),
+						'park'   => $this->input->post('park'),
+						'time' => $this->input->post('time')
+					);
+
+					$this->db->insert('booking', $dataBooking);
+
+					// if ($insertBookingDetails) {
+					// 	set_message("success", "User has been updated");
+					// }else{
+					// 	set_message("error", "Something went wrong");
+					// }
+
+				}
+
+				// pr($dataBooking);die;
+				
+				if ($insertOnboarding) {
+					set_message("success", "Onboarding has been completed!");
+				}else{
+					set_message("error", "Something went wrong");
+				}
+					
+
+				redirect(base_url('admin'));
+			}
+		}else{
+			$data["content"] = "get-started";
+			$this->load->view('_layout', $data);
+		}
+	}
+
 }
