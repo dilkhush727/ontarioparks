@@ -87,7 +87,7 @@
 								<div class="wizard-form-error"></div>
 							</div>
 							<div class="form-group">
-								<input type="text" name="park" class="form-control wizard-required" id="park">
+								<input type="text" name="park" class="form-control wizard-required" id="park" required>
 								<label for="park" class="wizard-form-text-label">Park</label>
 								<div class="wizard-form-error"></div>
 							</div>
@@ -98,10 +98,11 @@
 							</div>
 							<div class="form-group clearfix d-flex justify-content-center gap-3">
 								<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
-								<a href="javascript:;" class="form-wizard-submit float-right" id="submitBooking"><i class="fa fa-check"></i></a>
+								<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+								<!-- <a href="javascript:;" class="form-wizard-submit float-right" id="submitBooking"><i class="fa fa-check"></i></a> -->
 							</div>
 						</fieldset>	
-						<!-- <fieldset class="wizard-fieldset">
+						<fieldset class="wizard-fieldset mt-5">
 							<h5>Bank Information</h5>
 							<div class="form-group">
 								<input type="text" class="form-control wizard-required" id="bname">
@@ -123,12 +124,12 @@
 								<label for="acon" class="wizard-form-text-label">Account Number*</label>
 								<div class="wizard-form-error"></div>
 							</div>
-							<div class="form-group clearfix">
-								<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
-								<a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
+							<div class="form-group clearfix d-flex justify-content-center gap-3">
+								<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
+								<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
 							</div>
 						</fieldset>	
-						<fieldset class="wizard-fieldset">
+						<!-- <fieldset class="wizard-fieldset">
 							<h5>Payment Information</h5>
 							<div class="form-group">
 								Payment Type
@@ -255,7 +256,7 @@
 								<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
 								<a href="javascript:;" class="form-wizard-submit float-right">Submit</a>
 							</div>
-						</fieldset>	 -->
+						</fieldset> -->
 					</form>
 				</div>
 			</div>

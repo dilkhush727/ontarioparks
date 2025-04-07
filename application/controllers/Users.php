@@ -8,9 +8,10 @@ class Users extends MY_Controller {
 	}
 
 	public function getStarted(){
-		// if (!empty(userData()->company_name) && !empty(userData()->biz_type)) {
-		// 	redirect(base_url('chooseAccName'));die;
-		// }
+		
+		if (!empty(userData()->onboarding)) {
+			redirect(base_url('admin'));die;
+		}
 
 		$data["content"] = "admin/get-started";
 		$this->load->view('_layout', $data);
@@ -139,7 +140,7 @@ class Users extends MY_Controller {
 			$this->form_validation->set_rules('park', 'Park', 'required');
 
 			if($this->form_validation->run() == false){
-				$data["content"] = "get-started";
+				$data["content"] = "admin/get-started";
 				$this->load->view('_layout', $data);
 			}else{
 
