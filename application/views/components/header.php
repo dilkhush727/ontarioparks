@@ -37,7 +37,7 @@
         <i class="fa fa-map"></i>
         <span>Navigate</span>
     </a>
-    <a href="#">
+    <a href=" <?=base_url('Gearguide'); ?>">
         <i class="fa fa-compass"></i>
         <span>Gear Guide</span>
     </a>
