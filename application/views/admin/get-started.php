@@ -103,7 +103,7 @@
 							</div>
 						</fieldset>	
 						<fieldset class="wizard-fieldset mt-5">
-							<h5>Bank Information</h5>
+							<h2 class="text-center">Lets Help You Get Started!</h2>
 							<div class="form-group">
 								<input type="text" class="form-control wizard-required" id="bname">
 								<label for="bname" class="wizard-form-text-label">Bank Name*</label>
