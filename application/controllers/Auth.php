@@ -13,7 +13,7 @@ class Auth extends CI_Controller {
 	public function index()
 	{
 		if (userData()) {
-			redirect(base_url('admin'));
+			redirect(base_url('dashboard'));
 		}
 		$data["content"] = "auth/signin";
 		$this->load->view('_layout-plain', $data);
@@ -22,7 +22,7 @@ class Auth extends CI_Controller {
 	public function signin()
 	{
 		if (userData()) {
-			redirect(base_url('admin'));
+			redirect(base_url('dashboard'));
 		}
 		
 		$data['content'] = 'auth/signin';
@@ -76,7 +76,7 @@ class Auth extends CI_Controller {
 				);
 
 				$this->session->set_userdata("login_user", $sessionData);
-				redirect(base_url('admin'));
+				redirect(base_url('dashboard'));
 			}
 		}
 	}
@@ -84,7 +84,7 @@ class Auth extends CI_Controller {
 	public function signup()
 	{
 		if (userData()) {
-			redirect(base_url('admin'));
+			redirect(base_url('dashboard'));
 		}
 
 		if ($this->input->post('email')) {

@@ -22,7 +22,7 @@ class MY_Controller extends CI_Controller
 			redirect(base_url());
 		}
 
-		if (end($this->uri->segments) != 'get-started' && end($this->uri->segments) != 'onboarding') {
+		if (end($this->uri->segments) != 'get-started' && end($this->uri->segments) != 'onboarding' && end($this->uri->segments) != 'addfriend' && end($this->uri->segments) != 'removefriend') {
 			if (empty(userData()->onboarding)) {
 				redirect(base_url('get-started'));die;
 			}

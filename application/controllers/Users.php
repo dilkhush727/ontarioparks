@@ -10,10 +10,10 @@ class Users extends MY_Controller {
 	public function getStarted(){
 		
 		if (!empty(userData()->onboarding)) {
-			redirect(base_url('admin'));die;
+			redirect(base_url('dashboard'));die;
 		}
 
-		$data["content"] = "admin/get-started";
+		$data["content"] = "dashboard/get-started";
 		$this->load->view('_layout', $data);
 	}
 
@@ -133,6 +133,7 @@ class Users extends MY_Controller {
 	public function onBoarding(){
 
 		if (!empty($this->input->post())) {
+
 			$userId = userData()->id;
 
 			$this->form_validation->set_rules('date', 'Date', 'required');
@@ -140,7 +141,7 @@ class Users extends MY_Controller {
 			$this->form_validation->set_rules('park', 'Park', 'required');
 
 			if($this->form_validation->run() == false){
-				$data["content"] = "admin/get-started";
+				$data["content"] = "dashboard/get-started";
 				$this->load->view('_layout', $data);
 			}else{
 
@@ -155,20 +156,22 @@ class Users extends MY_Controller {
 
 				// pr($status);
 
-				// pr($data);die;
+				// pr($userDataOnboarding);die;
 
 				$insertOnboarding = $this->db->where('id', $userId)->update('user', $userDataOnboarding);
 
 
 
-				if(!empty($this->input->post('date') && $this->input->post('park') && $this->input->post('time'))){
+				// if(!empty($this->input->post('date') && $this->input->post('park') && $this->input->post('time'))){
 				
 					$dataBooking = array(
 						'u_id'  => $userId,
 						'date'  => $this->input->post('date'),
 						'park'   => $this->input->post('park'),
-						'time' => $this->input->post('time')
+						'time' => date("H:i:s", strtotime($this->input->post('time')))
 					);
+
+					// pr($dataBooking);die;
 
 					$this->db->insert('booking', $dataBooking);
 
@@ -178,7 +181,7 @@ class Users extends MY_Controller {
 					// 	set_message("error", "Something went wrong");
 					// }
 
-				}
+				// }
 
 				// pr($dataBooking);die;
 				
@@ -189,12 +192,80 @@ class Users extends MY_Controller {
 				}
 					
 
-				redirect(base_url('admin'));
+				redirect(base_url('gear-guide'));
 			}
 		}else{
 			$data["content"] = "get-started";
 			$this->load->view('_layout', $data);
 		}
 	}
+
+	public function addFriend() {
+		$friendId = $this->input->post('friend_id');
+		$userId = userData()->id;
+	
+		if (!$friendId || !$userId) {
+			echo json_encode(['status' => 'error', 'message' => 'Invalid request']);
+			return;
+		}
+		
+		$this->db->where('u_id', $userId);
+		$this->db->where('f_id', $friendId);
+		$query = $this->db->get('friend');
+	
+		if ($query->num_rows() > 0) {
+			echo json_encode(['status' => 'error', 'message' => 'Friendship already exists']);
+			return;
+		}
+		
+		$insert = $this->db->insert('friend', [
+			'u_id' => $userId,
+			'f_id' => $friendId
+		]);
+	
+		if ($insert) {
+			echo json_encode(['status' => 'success', 'message' => 'Friend added successfully']);
+		} else {
+			echo json_encode(['status' => 'error', 'message' => 'Failed to add friend']);
+		}
+	}
+
+	public function removeFriend() {
+		// Get the friend ID from the request
+		$friendId = $this->input->post('friend_id');
+		$userId = userData()->id;
+	
+		if (!$friendId || !$userId) {
+			echo json_encode(['status' => 'error', 'message' => 'Invalid request']);
+			return;
+		}
+	
+		// Check if the friendship exists
+		$this->db->where('u_id', $userId);
+		$this->db->where('f_id', $friendId);
+		$query = $this->db->get('friend');
+	
+		if ($query->num_rows() == 0) {
+			echo json_encode(['status' => 'error', 'message' => 'Friendship does not exist']);
+			return;
+		}
+	
+		// Delete the friendship record
+		$this->db->where('u_id', $userId);
+		$this->db->where('f_id', $friendId);
+		$delete = $this->db->delete('friend');
+	
+		if ($delete) {
+			echo json_encode(['status' => 'success', 'message' => 'Friend removed successfully']);
+		} else {
+			echo json_encode(['status' => 'error', 'message' => 'Failed to remove friend']);
+		}
+	}
+
+	public function addNewFriends(){
+		$data["content"] = "dashboard/users/add-new-friends";
+		$this->load->view('_layout', $data);
+	}
+	
 
 }

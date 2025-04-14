@@ -87,11 +87,23 @@ if (!function_exists('get_integrations')) {
 }
 
 if (!function_exists('getCart')) {
-    function getCart(){
+    function getCart() {
         $CI     = &get_instance();
         $userId = userData()->id;
-        return $CI->db->where('user_id', $userId)->get('cart')->row();
+    
+        $items = $CI->db->where('u_id', $userId)->get('cart')->result();
+    
+        $total = 0;
+        foreach ($items as $item) {
+            $total += (float) $item->price;
+        }
+    
+        return [
+            'items' => $items,
+            'total' => $total
+        ];
     }
+    
 }
 
 if (!function_exists('getSubdomain')) {
@@ -120,13 +132,13 @@ if (!function_exists('subDomainUrl')) {
     }
 }
 
-if (!function_exists('getPlans')) {
-    function getPlans($plan_id=NULL){
+if (!function_exists('getPricing')) {
+    function getPricing($plan_id=NULL){
         $CI = &get_instance();
         if (!empty($plan_id)) {
-            $query = $CI->db->where('id', $plan_id)->get('plans')->row();
+            $query = $CI->db->where('id', $plan_id)->get('pricing')->row();
         }else{
-            $query = $CI->db->where('status', 1)->get('plans')->result();
+            $query = $CI->db->where('status', 1)->get('pricing')->result();
         }
         return $query;
     }
@@ -217,5 +229,127 @@ if (!function_exists('planExpiringDate')) {
             $newEndingDate = date("Y-m-d", strtotime($subdomainCreatedDate . " + 14 days"));
         }
         return $newEndingDate;
+    }
+}
+
+
+if (!function_exists('getFriends')) {
+    function getFriends(){
+        $userId = userData()->id;
+        $CI = &get_instance();
+        
+        $query = $CI->db
+    ->select('
+        user.id, 
+        user.f_name, 
+        user.l_name, 
+        user.email, 
+        user.phone, 
+        user.status, 
+        user.onboarding, 
+        GROUP_CONCAT(CONCAT(
+            \'{"park":"\', booking.park, \'", 
+            "date":"\', booking.date, \'", 
+            "time":"\', booking.time, \'", 
+            "status":"\', booking.status, \'"}\'
+        ) SEPARATOR ",") AS bookings,
+        COUNT(booking.id) AS total_bookings,
+        IFNULL(MIN(booking.date), "0") AS next_reservation,
+        IF(friend.id IS NOT NULL, 1, 0) AS is_friend
+    ')
+    ->from('user')
+    ->join('booking', 'booking.u_id = user.id AND booking.date >= CURDATE()', 'left')
+    ->join('friend', 'friend.u_id = '.$CI->db->escape($userId).' AND friend.f_id = user.id', 'left')
+    ->where('user.onboarding', 1)
+    ->where('user.id !=', $userId)
+    ->group_by('user.id')
+    ->order_by('user.f_name', 'ASC')
+    ->get()
+    ->result();
+
+        
+        // pr($query);die;
+
+        return $query;
+    }
+}
+
+if (!function_exists('getMyFriends')) {
+    function getMyFriends(){
+        $userId = userData()->id;
+        $CI = &get_instance();
+
+        // Create a subquery to fetch the friend IDs
+        $subquery = $CI->db->select('f_id')
+                        ->from('friend')
+                        ->where('u_id', $userId)
+                        ->get_compiled_select();
+
+        // Perform the main query using the subquery
+        $query = $CI->db
+            ->select('
+                user.id, 
+                user.f_name, 
+                user.l_name, 
+                user.email, 
+                user.phone, 
+                user.status, 
+                user.onboarding, 
+                GROUP_CONCAT(CONCAT(
+                    \'{"park":"\', booking.park, \'", 
+                    "date":"\', booking.date, \'", 
+                    "time":"\', booking.time, \'", 
+                    "status":"\', booking.status, \'"}\'
+                ) SEPARATOR ",") AS bookings,
+                COUNT(booking.id) AS total_bookings,
+                IFNULL(MIN(booking.date), "0") AS next_reservation
+            ')
+            ->from('user')
+            ->join('booking', 'booking.u_id = user.id AND booking.date >= CURDATE()', 'left')
+            ->where('user.onboarding', 1)
+            ->where('user.id !=', $userId)
+            ->where("user.id IN ($subquery)")  // Using the subquery in the WHERE IN clause
+            ->group_by('user.id')
+            ->order_by('user.f_name', 'ASC')
+            ->get()
+            ->result();
+
+        return $query;
+    }
+}
+
+if (!function_exists('getNextBooking')) {
+    function getNextBooking(){
+        
+        $userId = userData()->id;
+        $CI = &get_instance();
+
+        // Get the next booking (only one row)
+        $booking = $CI->db
+            ->where('u_id', $userId)
+            ->where('date >=', date('Y-m-d'))
+            ->order_by('date', 'asc')
+            ->order_by('time', 'asc')
+            ->limit(1)
+            ->get('booking')
+            ->row();
+
+        if ($booking) {
+            $booking_datetime = new DateTime($booking->date . ' ' . $booking->time);
+            $now = new DateTime();
+            $interval = $now->diff($booking_datetime);
+
+            if ($interval->days > 0) {
+                $booking->time_remaining = $interval->days . ' day(s)';
+            } else {
+                $booking->time_remaining = $interval->h . ' hour(s) ' . $interval->i . ' minute(s)';
+            }
+        }
+
+        // pr($booking); die;
+
+        return $booking;
+
+        
     }
 }

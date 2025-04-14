@@ -30,7 +30,7 @@ $route['registerd']            = 'cms/pages';
 
 // $route['pricing']              = 'cms/pricing';
 
-$route['admin']          = 'admin/index';
+$route['dashboard']          = 'dashboard/index';
 $route['get-started']           = 'users/getStarted';
 // $route['chooseAccName']      = 'users/chooseAccName';
 $route['logout']             = 'auth/logout';
@@ -58,4 +58,13 @@ $route['contact-us']             = 'Frontend/contactUs';
 // $route['emailUnsubscribe']      = 'Frontend/emailUnsubscribe';
 
 $route['onboarding'] = 'users/onBoarding';
+$route['add-friends'] = 'users/addNewFriends';
+$route['addfriend'] = 'users/addFriend';
+$route['removefriend'] = 'users/removeFriend';
 // $route['addBooking'] = 'booking/addBooking';
+$route['gear-guide'] = 'Gearguide/index';
+$route['gear-guide-pricing/(:any)'] = 'Gearguide/pricing/$1';
+
+$route['add-to-cart'] = 'Gearguide/addToCart';
+$route['checkout'] = 'Payments/checkout';
+$route['payment-status/(:any)'] = 'Payments/success/$1';
