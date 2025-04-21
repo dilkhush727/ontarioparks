@@ -6,7 +6,7 @@
     <!-- For PWA Starts -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="theme-color" content="#906172">
+    <meta name="theme-color" content="#157E7A">
     <link rel="apple-touch-icon" href="<?=base_url()?>assets/pwa/apple-touch-icon.png">
     <link rel="manifest" href="<?=base_url()?>manifest.json">
 
