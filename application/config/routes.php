@@ -62,9 +62,12 @@ $route['add-friends'] = 'users/addNewFriends';
 $route['addfriend'] = 'users/addFriend';
 $route['removefriend'] = 'users/removeFriend';
 // $route['addBooking'] = 'booking/addBooking';
-$route['gear-guide'] = 'Gearguide/index';
-$route['gear-guide-pricing/(:any)'] = 'Gearguide/pricing/$1';
+$route['gear-guide'] = 'gearguide/index';
+$route['gear-guide-pricing/(:any)'] = 'gearguide/pricing/$1';
 
-$route['add-to-cart'] = 'Gearguide/addToCart';
-$route['checkout'] = 'Payments/checkout';
-$route['payment-status/(:any)'] = 'Payments/success/$1';
+$route['add-to-cart/(:any)'] = 'gearguide/addToCart/$1';
+$route['checkout'] = 'payments/checkout';
+$route['payment-status/(:any)'] = 'payments/success/$1';
+
+$route['get-parks'] = 'gearguide/getParks';
+

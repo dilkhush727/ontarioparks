@@ -7,8 +7,15 @@
 			<div class="col-md-6 m-auto">
 				
                 <div class="container mb-5">
-                    <h2 class="mb-1 text-center"><?=$price_details->name; ?> Gear Guide</h2>
-                    <p class="text-center">Customize your pack</p>
+
+                <div class="d-flex align-items-center gap-3">
+                    <a href="<?=base_url('gear-guide')?>" class="btn-theme-circle"><i class="fa fa-arrow-left"></i></a>
+                    <div>
+                        <h2 class="mb-1 text-center"><?=$price_details->name; ?> Gear Guide</h2>
+                        <p class="text-center">Customize your pack</p>
+                    </div>
+                </div>
+
                     <form id="starterForm">
                         <div class="row plan-item-list">
                         <h2 class="mb-4"><?=$price_details->name; ?> Pack Items</h2>
@@ -31,7 +38,7 @@
                         </div>
                         <div class="text-center mt-4">
                         <h4>Total: $<span id="totalPrice">0</span></h4>
-                        <button type="button" class="btn btn-theme mt-3" id="checkoutBtn">Proceed to Checkout </button>
+                        <button type="button" class="btn btn-theme mt-3 mb-5" id="checkoutBtn">Proceed to Checkout </button>
                         </div>
                     </form>
                 </div>
@@ -66,7 +73,7 @@
 
         $.ajax({
         type: "POST",
-        url: "<?= base_url('add-to-cart') ?>",
+        url: "<?= base_url('add-to-cart/'). $price_details->id; ?>",
         data: { items: JSON.stringify(selectedItems) },
         dataType: "json",
         success: function(response) {

@@ -5,27 +5,19 @@
                 <img src="<?=base_url()?>assets/images/logo.png" width="70">
             </a>
 
-            <img src="<?=base_url('assets/images/user.png')?>" class="user-image">
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
-                <ul class="navbar-nav mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?= base_url(); ?>">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="javascript:;" onclick="alert('Coming Soon...')">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="javascript:;" onclick="alert('Coming Soon...')">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url('logout'); ?>">Sign Out</a>
-                    </li>
-                </ul>
-            </div> -->
+            <!-- <img src="<?=base_url('assets/images/user-profile.png')?>" class="user-image"> -->
+
+            <div>
+                <img src="<?=base_url('assets/images/user-profile.png')?>" class="navbar-toggler user-image" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?=base_url('logout'); ?>">Sign Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </div>
 </header>
@@ -37,7 +29,7 @@
             <span>Home</span>
         </a>
 
-        <a href="#" class="">
+        <a href="<?= base_url('get-parks'); ?>" class="<?= strpos(current_url(), base_url('get-parks')) !== false ? 'active' : '' ?>">
             <i class="fa fa-map"></i>
             <span>Navigate</span>
         </a>
@@ -47,7 +39,7 @@
             <span>Gear Guide</span>
         </a>
 
-        <a href="#" class="">
+        <a href="<?= base_url('add-friends'); ?>" class="<?= strpos(current_url(), base_url('add-friends')) !== false ? 'active' : '' ?>">
             <i class="fa fa-comments"></i>
             <span>Community</span>
         </a>

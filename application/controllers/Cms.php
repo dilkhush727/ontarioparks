@@ -7,6 +7,6 @@ class Cms extends CI_Controller {
 	{
 		$pageName = end($this->uri->segments);
 		$data["content"] = 'pages/'.$pageName;
-		$this->load->view('_layout', $data);
+		$this->load->view('_layout-plain', $data);
 	}
 }

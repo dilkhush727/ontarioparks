@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
 
-    <section class="wizard-section">
+    <section class="wizard-section mb-80">
 		<div class="row no-gutters">
 			<div class="col-lg-6 col-md-6">
 				<div class="wizard-content-left d-flex justify-content-center align-items-center">
@@ -24,79 +24,80 @@
 
 						<fieldset class="wizard-fieldset show">
 
-                        <div class="row">
-                            <div class="col-md-4 mb-3 ">
-                                <div class="plan-items theme-card">
-                                    <h2 class="mb-4">Starter Pack</h2>
+                            <div class="row">
+                                <div class="col-md-4 mb-3 ">
+                                    <div class="plan-items theme-card">
+                                        <h2 class="mb-4"><?=getCart()['pricing']['name']; ?> Pack</h2>
 
-                                    <?php if (!empty(getCart()['items'])) { foreach (getCart()['items'] as $cart) { ?>
-                                        <ul class="p-0">
-                                            <li class="d-flex align-items-center justify-content-between gap-2">
-                                                <strong><?=$cart->item; ?></strong>
-                                                <span><?=round($cart->price); ?> CAD</span>
-                                            </li>
-                                        </ul>
-                                    <?php }} ?>
+                                        <?php if (!empty(getCart()['items'])) { foreach (getCart()['items'] as $cart) { ?>
+                                            <ul class="p-0">
+                                                <li class="d-flex align-items-center justify-content-between gap-2">
+                                                    <strong><?=$cart->item; ?></strong>
+                                                    <span><?=round($cart->price); ?> CAD</span>
+                                                </li>
+                                            </ul>
+                                        <?php }} ?>
 
-                                    <div class="text-center">
-                                        <label class="label-light d-flex align-items-center justify-content-between">
-                                            <span>Total Cost</span>    
-                                            <span><?=getCart()['total']; ?> CAD</span>                                        
-                                        </label>
+                                        <div class="text-center">
+                                            <label class="label-light d-flex align-items-center justify-content-between">
+                                                <span>Total Cost</span>    
+                                                <span><?=getCart()['total']; ?> CAD</span>                                        
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-							<div class="form-group clearfix">
-								<a href="javascript:;" class="btn-theme-border float-right">Edit your Pack</a>
+							<div class="form-group mb-3 clearfix">
+								<a href="javascript:;" class="btn-theme-border float-right" onclick="window.history.back();">Edit your Pack</a>
 							</div>
-							<div class="form-group clearfix">
+							<div class="form-group mt-0 mb-5 pb-5 clearfix">
 								<a href="javascript:;" class="form-wizard-next-btn btn-theme float-right">Continue to Payment</a>
 							</div>
 						</fieldset>	
 
 						<fieldset class="wizard-fieldset">
 							<h5>Delivery Details</h5>
-							<div class="form-group">
+							<div class="form-group mb-2">
 								<input type="text" name="address" class="form-control wizard-required" id="address">
 								<label for="address" class="wizard-form-text-label">Address*</label>
 								<div class="wizard-form-error"></div>
 							</div>
 
                             <div class="d-flex gap-2">
-                                <div class="form-group">
+                                <div class="form-group my-3">
                                     <input type="text" name="postalcode" class="form-control wizard-required" id="postalcode">
                                     <label for="postalcode" class="wizard-form-text-label">Postal Code*</label>
                                     <div class="wizard-form-error"></div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group my-3">
                                     <input type="text" name="city" class="form-control wizard-required" id="city">
                                     <label for="city" class="wizard-form-text-label">City*</label>
                                     <div class="wizard-form-error"></div>
                                 </div>
-                                <div class="form-group">
-                                    <select class="form-select" id="province" name="province" required>
-                                        <option value="" disabled selected>Province</option>
+                            </div>
+                            
+                            <div class="form-group my-3">
+                                <select class="form-select form-control" id="province" name="province" required>
+                                    <option value="" disabled selected>Province</option>
 
-                                        <!-- Provinces -->
-                                        <option value="AB">Alberta</option>
-                                        <option value="BC">British Columbia</option>
-                                        <option value="MB">Manitoba</option>
-                                        <option value="NB">New Brunswick</option>
-                                        <option value="NL">Newfoundland and Labrador</option>
-                                        <option value="NS">Nova Scotia</option>
-                                        <option value="ON">Ontario</option>
-                                        <option value="PE">Prince Edward Island</option>
-                                        <option value="QC">Quebec</option>
-                                        <option value="SK">Saskatchewan</option>
+                                    <!-- Provinces -->
+                                    <option value="AB">Alberta</option>
+                                    <option value="BC">British Columbia</option>
+                                    <option value="MB">Manitoba</option>
+                                    <option value="NB">New Brunswick</option>
+                                    <option value="NL">Newfoundland and Labrador</option>
+                                    <option value="NS">Nova Scotia</option>
+                                    <option value="ON">Ontario</option>
+                                    <option value="PE">Prince Edward Island</option>
+                                    <option value="QC">Quebec</option>
+                                    <option value="SK">Saskatchewan</option>
 
-                                        <!-- Territories -->
-                                        <option value="NT">Northwest Territories</option>
-                                        <option value="NU">Nunavut</option>
-                                        <option value="YT">Yukon</option>
-                                    </select>
-                                </div>
+                                    <!-- Territories -->
+                                    <option value="NT">Northwest Territories</option>
+                                    <option value="NU">Nunavut</option>
+                                    <option value="YT">Yukon</option>
+                                </select>
                             </div>
 
                             <div class="text-center">
@@ -121,25 +122,21 @@
                                 <div class="wizard-form-error"></div>
                             </div>
 
-							<div class="form-group">
+							<div class="form-group mb-0">
 								<input type="text" class="form-control wizard-required" id="nameoncard">
 								<label for="nameoncard" class="wizard-form-text-label">Name on Card*</label>
 								<div class="wizard-form-error"></div>
 							</div>
                             
-							<div class="d-flex">
-                                <div class="form-group">
-                                    <div class="col-12">Expiry Date</div>
-                                    <div class="col-lg-4 col-md-4 col-sm-4">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control wizard-required" id="expirydate" placeholder="MM/YY" maxlength="5" pattern="(0[1-9]|1[0-2])\/\d{2}" title="Format: MM/YY">
-                                        </div>
-                                    </div>
+							<div class="d-flex gap-2">
+                                <div class="form-group focus-input">
+                                    <label for="expirydate"class="wizard-form-text-label">Expiry Date</label>
+                                    <input type="text" class="form-control wizard-required" id="expirydate" placeholder="MM/YY" maxlength="5" pattern="(0[1-9]|1[0-2])\/\d{2}" title="Format: MM/YY">
                                 </div>
                             
                                 <div class="form-group">
+                                    <label for="cvc"class="wizard-form-text-label">CVC*</label>
                                     <input type="text" class="form-control wizard-required" id="cvc">
-                                    <label for="cvc" class="wizard-form-text-label">CVC*</label>
                                     <div class="wizard-form-error"></div>
                                 </div>
 							</div>
@@ -151,7 +148,7 @@
                                 </label>
                             </div>
 
-							<div class="form-group clearfix">
+							<div class="form-group clearfix mb-5 pb-5">
 								<a href="javascript:;" class="form-wizard-previous-btn btn-theme-border mb-3 float-left">Previous</a>
 								<a href="javascript:;" class="form-wizard-next-btn btn-theme float-right">Continue</a>
 							</div>
@@ -161,7 +158,7 @@
 							<h5>Review & Pay</h5>
                             
                             <div class="plan-items theme-card">
-                                <h2 class="mb-4">Starter Pack</h2>
+                                <h2 class="mb-4"><?=getCart()['pricing']['name']; ?> Pack</h2>
 
                                 <?php if (!empty(getCart()['items'])) { foreach (getCart()['items'] as $cart) { ?>
                                     <ul class="p-0">
@@ -197,7 +194,7 @@
                                     </small>
                             </div>
 
-							<div class="form-group clearfix">
+							<div class="form-group mb-5 pb-5 clearfix">
 								<a href="javascript:;" class="form-wizard-previous-btn btn-theme-border mb-3 float-left">Previous</a>
 								<a href="javascript:;" class="form-wizard-submit btn-theme float-right">Pay</a>
 							</div>
@@ -269,3 +266,4 @@
     bindLiveUpdate('cvc', 'r_cardcvv', maskCVV);
   });
 </script>
+<script src="<?=base_url()?>assets/js/form-checkout.js"></script>

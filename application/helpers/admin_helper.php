@@ -91,18 +91,38 @@ if (!function_exists('getCart')) {
         $CI     = &get_instance();
         $userId = userData()->id;
     
-        $items = $CI->db->where('u_id', $userId)->get('cart')->result();
+        $CI->db->select('cart.*, pricing.name as pricing_name, pricing.id as pricing_id');
+        $CI->db->from('cart');
+        $CI->db->join('pricing', 'pricing.id = cart.plan_id', 'left');
+        $CI->db->where('cart.u_id', $userId);
+        $items = $CI->db->get()->result();
     
         $total = 0;
+        $pricing = null;
+    
         foreach ($items as $item) {
             $total += (float) $item->price;
+    
+            // Capture pricing info from the first item (assuming all same)
+            if (!$pricing && $item->pricing_id) {
+                $pricing = [
+                    'id' => $item->pricing_id,
+                    'name' => $item->pricing_name
+                ];
+            }
+    
+            // Optionally remove pricing fields from each item
+            unset($item->pricing_name, $item->pricing_id);
         }
     
         return [
-            'items' => $items,
-            'total' => $total
+            'items'   => $items,
+            'total'   => $total,
+            'pricing' => $pricing
         ];
     }
+    
+    
     
 }
 
@@ -239,39 +259,37 @@ if (!function_exists('getFriends')) {
         $CI = &get_instance();
         
         $query = $CI->db
-    ->select('
-        user.id, 
-        user.f_name, 
-        user.l_name, 
-        user.email, 
-        user.phone, 
-        user.status, 
-        user.onboarding, 
-        GROUP_CONCAT(CONCAT(
-            \'{"park":"\', booking.park, \'", 
-            "date":"\', booking.date, \'", 
-            "time":"\', booking.time, \'", 
-            "status":"\', booking.status, \'"}\'
-        ) SEPARATOR ",") AS bookings,
-        COUNT(booking.id) AS total_bookings,
-        IFNULL(MIN(booking.date), "0") AS next_reservation,
-        IF(friend.id IS NOT NULL, 1, 0) AS is_friend
-    ')
-    ->from('user')
-    ->join('booking', 'booking.u_id = user.id AND booking.date >= CURDATE()', 'left')
-    ->join('friend', 'friend.u_id = '.$CI->db->escape($userId).' AND friend.f_id = user.id', 'left')
-    ->where('user.onboarding', 1)
-    ->where('user.id !=', $userId)
-    ->group_by('user.id')
-    ->order_by('user.f_name', 'ASC')
-    ->get()
-    ->result();
-
-        
-        // pr($query);die;
-
+            ->select('
+                user.id, 
+                user.f_name, 
+                user.l_name, 
+                user.email, 
+                user.phone, 
+                user.status, 
+                user.onboarding, 
+                GROUP_CONCAT(CONCAT(
+                    \'{"park":"\', booking.park, \'", 
+                    "date":"\', booking.date, \'", 
+                    "time":"\', booking.time, \'", 
+                    "status":"\', booking.status, \'"}\'
+                ) SEPARATOR ",") AS bookings,
+                COUNT(booking.id) AS total_bookings,
+                IFNULL(MIN(booking.date), "0") AS next_reservation,
+                MAX(IF(friend.id IS NOT NULL, 1, 0)) AS is_friend
+            ')
+            ->from('user')
+            ->join('booking', 'booking.u_id = user.id AND booking.date >= CURDATE()', 'left')
+            ->join('friend', 'friend.u_id = '.$CI->db->escape($userId).' AND friend.f_id = user.id', 'left')
+            ->where('user.onboarding', 1)
+            ->where('user.id !=', $userId)
+            ->group_by('user.id')
+            ->order_by('user.f_name', 'ASC')
+            ->get()
+            ->result();
+    
         return $query;
     }
+    
 }
 
 if (!function_exists('getMyFriends')) {

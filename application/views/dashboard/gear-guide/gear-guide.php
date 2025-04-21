@@ -4,7 +4,7 @@
 	<div class="hero-section p-2 rounded position-relative">
 		<div class="row align-items-center">
 			
-			<div class="col-md-6 m-auto">
+			<div class="col-md-6 m-auto mb-80">
 
 				<div class="text-center">
 					<h1>Gear Guide</h1>

@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-<div class="container-fluid">
-	<div class="hero-section p-2 rounded position-relative">
+<div class="container-fluid home-banner-top">
+	<div class="auth-wide position-relative">
 		<div class="row align-items-center">
 			
 			<div class="col-md-6 m-auto">
@@ -47,8 +47,8 @@
 				</form>
 
 
-				<div class="">
-					<p>Already have an account?
+				<div class="text-center">
+					<p class="mb-5 pb-5">Already have an account?
 						<a href="<?=base_url('auth/signin')?>"><u>Sign In</u></a>
 					</p>
 				</div>
@@ -66,7 +66,7 @@
 			</div>
 		
 		</div>
-		<img src="<?=base_url(); ?>assets/images/sloth.png" alt="">
+		<!-- <img src="<?=base_url(); ?>assets/images/sloth.png" class="img-fluid" alt=""> -->
 	</div>
 	
 </div>

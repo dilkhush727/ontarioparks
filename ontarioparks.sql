@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2025 at 06:33 PM
+-- Generation Time: Apr 21, 2025 at 03:55 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.5
 
@@ -46,6 +46,7 @@ CREATE TABLE `booking` (
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `u_id` int(11) NOT NULL,
+  `plan_id` int(11) NOT NULL,
   `item` varchar(100) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -123,20 +124,10 @@ CREATE TABLE `user` (
   `phone` varchar(15) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=First Time Camper\r\n1=Experienced Camper',
+  `frequency` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0=first time camper\r\n1=Once in 2-3 years\r\n2=Once every year\r\n3=Once every month',
   `onboarding` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `f_name`, `l_name`, `email`, `password`, `verified_at`, `phone`, `image`, `status`, `onboarding`, `created_at`) VALUES
-(1, 'Dilkhush', NULL, 'dilkhushyadav@gmail.com', '$2a$08$DgAEfrd4k0XsMIRyR9r1HehvGkoTfkvN7ut2EvVjzwyPMp3WrNT6K', '2025-04-07 12:52:22', NULL, NULL, 1, 1, '2025-04-07 12:45:15'),
-(2, 'Raina', 'Motihar', 'rainamotihar@gmail.com', '$2a$08$DgAEfrd4k0XsMIRyR9r1HehvGkoTfkvN7ut2EvVjzwyPMp3WrNT6K', '2025-04-07 12:52:22', NULL, NULL, 1, 1, '2025-04-07 12:45:15'),
-(3, 'Adil', NULL, 'adilsurve@gmail.com', '$2a$08$DgAEfrd4k0XsMIRyR9r1HehvGkoTfkvN7ut2EvVjzwyPMp3WrNT6K', '2025-04-07 12:52:22', NULL, NULL, 1, 1, '2025-04-07 12:45:15'),
-(4, 'Lulia', NULL, 'lulia@gmail.com', '$2a$08$DgAEfrd4k0XsMIRyR9r1HehvGkoTfkvN7ut2EvVjzwyPMp3WrNT6K', '2025-04-07 12:52:22', NULL, NULL, 0, 1, '2025-04-07 12:45:15'),
-(5, 'Ruhma', NULL, 'ruhma@gmail.com', '$2a$08$DgAEfrd4k0XsMIRyR9r1HehvGkoTfkvN7ut2EvVjzwyPMp3WrNT6K', '2025-04-07 12:52:22', NULL, NULL, 0, 1, '2025-04-07 12:45:15');
 
 --
 -- Indexes for dumped tables
@@ -216,7 +207,7 @@ ALTER TABLE `pricing`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

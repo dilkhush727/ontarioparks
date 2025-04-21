@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Varela+Round:wght@300&family=Roboto+Condensed:ital,wght@0,300;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 body{
 	margin: 0;
-	font-family: Varela Round;
 	font-size: 16px;
-  /* background: #f4f4f4; */
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 a{
     text-decoration: none;
@@ -18,16 +19,31 @@ header{
 }
 header .user-image{
   width: 40px;
-  border: solid 2px #000;
+  border: solid 2px #4d4d4f;
   border-radius: 30px;
+  padding: unset;
 }
+
+.navbar-collapse{
+  background: rgb(255, 255, 255);
+  position: absolute;
+  top: 68px;
+  width: 39%;
+  right: 0px;
+  box-shadow: rgb(202, 202, 202) 0px 0px 4px 1px;
+  padding: 10px 15px;
+  border-radius: 0px 0px 10px 10px;
+}
+
 .bg-theme{
   background: #26a3a3;
 }
 .text-theme{
   color: #26a3a3;
 }
-
+.mb-80{
+  margin-bottom: 80px!important;
+}
 #nav-footer .active{
   color:#5cc6c6;
 }
@@ -40,7 +56,9 @@ header .user-image{
   background: #f2f2f2;
   color: #000;
 }
-
+.font-20{
+  font-size: 20px;
+}
 .theme-card{
   background: #74c4c4;
   padding: 20px;
@@ -48,7 +66,7 @@ header .user-image{
 }
 
 main{
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
 }
 .navbar {
     padding-top: 0px;
@@ -60,15 +78,64 @@ main{
     padding: 2px 0;
 }
 .home-banner{
-    background-image: url(../images/home-banner.jpg);
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
+  background-image: url(../images/home-banner.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.home-banner-top::before{
+  /* background-image: url(../images/home-banner-top.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat; */
+
+  position: absolute;
+  content: "";
+  right: 0;
+  width: 100%;
+  background-image: url(../images/home-banner-top.jpg);
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  height: 100%;
+  top: 0;
+  opacity: 0.8;
 }
 .home-title{
     text-align: center;
-    font-size: 40px;
+    font-size: 32px;
     margin-top: 25%;
+    font-family: "Indie Flower", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.wizard-equipped::after{
+  position: absolute;
+  content: "";
+  left: -5px;
+  width: 60%;
+  background-image: url(../images/owl.png);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  height: 20%;
+  bottom: 80px;
+  opacity: 1;
+  z-index: 9;
+}
+
+.bottom-left-circle {
+  position: fixed;
+  bottom: -90px;
+  left: -95px;
+  width: 295px;
+  height: 277px;
+  background-color: #DFE8D4;
+  border-radius: 50%;
+  margin: 20px;
 }
 
 .btn-get-started{
@@ -90,12 +157,43 @@ main{
     padding: 4px 5px;
     border-radius: 20px;
 }
+.auth-wide{
+  position: absolute !important;
+  background: #fff;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px 40px 0 40px;
+  border-radius: 52px 52px 0 0;
+  min-height: calc(100vh - 12rem);
+}
+.auth-wide.auth-signin{
+  min-height: calc(100vh - 22rem);
+}
+.auth-wide::after{
+  position: absolute;
+  content: "";
+  right: 0;
+  width: 60%;
+  background-image: url(../images/sloth.png);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  height: 20%;
+  bottom: -10px;
+  opacity: 1;
+}
+
+.auth-wide.auth-signin::after{
+  height: 25%;
+}
 .auth-form input{
-    background-color: #D9D9D9;
-    padding: 10px 25px;
-    margin: 5px 0;
-    border: none;
-    width: 100%;
+  padding: 5px 20px;
+  margin: 5px 0;
+  border: solid 1px #d9d9d9d9;
+  width: 100%;
+  border-radius: 30px;
 }
 .color-theme{
   color: #157e7a;
@@ -127,6 +225,17 @@ main{
   border-radius: 30px !important;
   display: block;
   text-align: center;
+}
+
+.btn-theme-circle{
+  border: solid 1px #000;
+  border-radius: 30px;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #000;
 }
 
 .fValidations p {
@@ -215,7 +324,7 @@ main{
 }
 
 .plan-item-list{
-  height: calc(100vh - 22rem);
+  height: calc(100vh - 24rem);
   overflow-y: overlay;
   background-color: #26A3A3A3;
   padding: 20px;
@@ -263,6 +372,49 @@ main{
   font-size: 22px;
 }
 
+.card-success{
+  background: #ebfff8;
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: solid 2px #d9d9d9d9;
+  margin-bottom: 80px;
+}
+
+.card-success .fa{
+  font-size: 20px;
+  background: #d9d9d9d9;
+  width: 75px;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 15px;
+  color: #939393;
+}
+
+.card-success img{
+  background: #157E7A;
+  width: 75px;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 15px;
+}
+
+.card-equipped{
+  background: #d4eded;
+  border-radius: 40px;
+  padding: 30px 15px;
+  width: 85%;
+  margin: auto;
+  position: relative;
+  z-index: 9;
+}
+
 
 
 
@@ -283,7 +435,7 @@ main{
   }
   .wizard-equipped .fa-compass{
     font-size: 120px;
-    margin: 40px 15px;
+    margin-bottom: 25px;
   }
   .form-wizard .wizard-form-radio {
     display: flex    ;
@@ -291,7 +443,7 @@ main{
     position: relative;
     align-items: center;
   }
-  .form-wizard .wizard-form-radio input[type="radio"] {
+  /* .form-wizard .wizard-form-radio input[type="radio"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -305,14 +457,14 @@ main{
     border-radius: 50%;
     position: relative;
     cursor: pointer;
-  }
-  .form-wizard .wizard-form-radio input[type="radio"]:focus {
+  } */
+  /* .form-wizard .wizard-form-radio input[type="radio"]:focus {
     outline: 0;
-  }
-  .form-wizard .wizard-form-radio input[type="radio"]:checked {
+  } */
+  /* .form-wizard .wizard-form-radio input[type="radio"]:checked {
     background-color: #009688;
-  }
-  .form-wizard .wizard-form-radio input[type="radio"]:checked::before {
+  } */
+  /* .form-wizard .wizard-form-radio input[type="radio"]:checked::before {
     content: "";
     position: absolute;
     width: 15px;
@@ -324,8 +476,8 @@ main{
     right: 0;
     margin: 0 auto;
     top: 12px;
-  }
-  .form-wizard .wizard-form-radio input[type="radio"]:checked::after {
+  } */
+  /* .form-wizard .wizard-form-radio input[type="radio"]:checked::after {
     content: "";
     display: inline-block;
     webkit-animation: click-radio-wave 0.65s;
@@ -342,7 +494,42 @@ main{
     padding-left: 10px;
     cursor: pointer;
     font-size: 22px;
+  } */
+
+  /* Hide the default radio buttons */
+  .wizard-form-radio input[type="radio"] {
+    display: none;
   }
+
+  /* Style for the labels to look like buttons */
+  .radio-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 10px 50px !important;
+  }
+
+  /* Style when radio button is selected */
+  .wizard-form-radio input[type="radio"]:checked + label.radio-btn {
+    background-color: #157e7a;
+    color: #fff !important;
+  }
+
+  /* Hover effect */
+  .radio-btn:hover {
+    background-color: #e0e0e0;
+  }
+
+  /* Focus effect for accessibility */
+  .wizard-form-radio input[type="radio"]:focus + label.radio-btn {
+    outline: 2px solid #007bff;
+  }
+
+  
   .form-wizard .form-wizard-header {
     text-align: center;
   }
@@ -377,18 +564,16 @@ main{
     right: 0;
     bottom: 0;
     height: 2px;
-    width: 88%;
+    width: 80%;
   }
-  .form-wizard .form-wizard-previous-btn {
-    /* background-color: #fb1647; */
+  /* .form-wizard .form-wizard-previous-btn {
     border: solid 2px #ff9898;
     color: #ff9898;
   }
   .form-wizard .form-wizard-previous-btn:hover {
-    /* background-color: #fb1647; */
     border: solid 2px #ff0000;
     color: #ff0000;
-  }
+  } */
   .form-wizard .form-control {
     font-weight: 300;
     height: auto !important;
@@ -403,22 +588,25 @@ main{
   }
   .form-wizard .form-group {
     position: relative;
-    margin: 25px 0;
+    margin: 30px 0;
+  }
+  .form-wizard .card-footer .form-group {
+    margin: 15px 0;
   }
   .form-wizard .wizard-form-text-label {
     position: absolute;
     left: 20px;
-    top: 16px;
+    top: 12px;
     transition: 0.2s linear all;
   }
   .form-wizard .focus-input .wizard-form-text-label {
     color: #157e7a;
-    top: -18px;
+    top: -20px;
     transition: 0.2s linear all;
     font-size: 14px;
   }
   .label-clicked {
-    top: -20px !important;
+    top: -22px !important;
   }
   .form-wizard .form-wizard-steps {
     margin: 30px 0;
@@ -484,6 +672,18 @@ main{
     justify-content: center;
     align-items: center;
   }
+
+  .form-wizard .card-footer{
+    position: fixed !important;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 0 15px;
+    background: #ffffffe8;
+    /* margin-top: 20px; */
+  }
+
   @keyframes click-radio-wave {
     0% {
       width: 40px;
@@ -505,3 +705,67 @@ main{
     }
   }
   
+
+  /* Progress Camp */
+  .progress-camp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .step-camp {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .step-camp img {
+    width: 50px;
+    object-fit: cover;
+  }
+
+  .step-camp .place-pentagon {
+    background: #C3BEBE;
+    width: 40px;
+    height: 40px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #7B7777;
+    border-radius: 50%;
+  }
+  .step-camp .place-circle {
+    background: #C3BEBE;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #7B7777;
+    border-radius: 50%;
+  }
+  .step-camp .place-rectangle {
+    background: #C3BEBE;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #7B7777;
+  }
+
+  .line-camp {
+    height: 8px;
+    background-color: #007b7f;
+    flex: 1;
+    margin: 0;
+  }

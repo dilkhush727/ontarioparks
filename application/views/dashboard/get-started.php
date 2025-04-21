@@ -50,54 +50,246 @@
 			<div class="col-lg-12 col-md-12">
 				<div class="form-wizard">
 					<form action="<?=base_url('onboarding')?>" method="post" role="form" id="bookingForm">
-						<fieldset class="wizard-fieldset mt-5 show">
-							<h2 class="text-center mb-3">Is this Your First Time Camping?</h2>
+						<fieldset class="wizard-fieldset mt-3 show">
+							<h2 class="text-center mb-3">Is this Your First<br>Time Camping?</h2>
 							<div class="form-group radio-flex">
-								<div>
-									<img src="<?=base_url(); ?>assets/images/first-time-bear.png" width="200">
-								</div>
-								<div>
+
+								<div class="wizard-form">
 									<div class="wizard-form-radio mb-3">
-										<input name="onboarding" id="radio1" type="radio" value="1" checked>
-										<label for="radio1">Yes</label>
+										<input name="campstatus" id="radio1" type="radio" value="0" checked>
+										<label for="radio1" class="radio-btn btn-theme-border">Yes</label>
 									</div>
 									<div class="wizard-form-radio">
-										<input name="onboarding" id="radio2" type="radio" value="0">
-										<label for="radio2">No</label>
+										<input name="campstatus" id="radio2" type="radio" value="1">
+										<label for="radio2" class="radio-btn btn-theme-border">No</label>
 									</div>
 								</div>
+
 							</div>
-							<div class="form-group clearfix d-flex justify-content-center">
-								<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+
+							<div class="text-center">
+								<h4>Select an answer to reveal your<br><strong>Camping Leve</strong>l</h4>
 							</div>
+
+							<div class="progress-camp">
+									<div class="step-camp">
+										<div class="place-circle">?</div>
+									</div>
+									<div class="line-camp"></div>
+									<div class="step-camp">
+										<div class="place-rectangle">?</div>
+									</div>
+									<div class="line-camp"></div>
+									<div class="step-camp">
+										<div class="place-pentagon">?</div>
+									</div>
+								</div>
+
+								<h5 class="text-center">Achievements</h5>
+								<div class="card-success">
+									<div>
+										<i class="fa fa-lock"></i>
+									</div>
+									<div>
+										<h4>Beginner</h4>
+										<p>New to camping and learning  basics of setting up, staying safe, and enjoying the outdoors.</p>
+									</div>
+								</div>
+							
+							<div class="card-footer">
+
+								<div class="form-group clearfix d-flex justify-content-center">
+									<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+								</div>
+							</div>
+
+
 						</fieldset>	
-						<fieldset class="wizard-fieldset mt-5">
+						
+						<fieldset class="wizard-fieldset mt-3">
+
+							<div class="text-center">
+								<h2 class="mb-3">Your Camping Level</h2>
+								<p class="h1">Rookie Camper</p>
+								<img src="<?=base_url(); ?>assets/images/first-time-bear.png" width="200">
+							</div>
+							
+
+							<div class="progress-camp">
+									<div class="step-camp">
+										<img src="<?=base_url()?>assets/images/level-rookie.png">
+									</div>
+									<div class="line-camp"></div>
+									<div class="step-camp">
+										<div class="place-rectangle">?</div>
+									</div>
+									<div class="line-camp"></div>
+									<div class="step-camp">
+										<div class="place-pentagon">?</div>
+									</div>
+								</div>
+
+								<h5 class="text-center">Achievements</h5>
+								<div class="card-success">
+									<div>
+										<img src="<?=base_url()?>assets/images/level.png">
+									</div>
+									<div>
+										<h4>Beginner</h4>
+										<p>New to camping and learning  basics of setting up, staying safe, and enjoying the outdoors.</p>
+									</div>
+								</div>
+
+							<div class="card-footer">
+
+								<div class="form-group d-flex justify-content-between">
+									<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
+									<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+								</div>
+							</div>
+
+
+						</fieldset>	
+
+						<fieldset class="wizard-fieldset mt-3 in-active">
+							<h2 class="text-center mb-3">How often have you<br>been camping?</h2>
+							<div class="form-group radio-flex">
+
+								<div class="wizard-form">
+									<div class="wizard-form-radio justify-content-center mb-3">
+										<input name="frequency" id="frequency1" type="radio" value="1" checked>
+										<label for="frequency1" class="radio-btn btn-theme-border">Once in 2-3 years</label>
+									</div>
+									<div class="wizard-form-radio justify-content-center mb-3">
+										<input name="frequency" id="frequency2" type="radio" value="2">
+										<label for="frequency2" class="radio-btn btn-theme-border">Once every year</label>
+									</div>
+									<div class="wizard-form-radio justify-content-center mb-4">
+										<input name="frequency" id="frequency3" type="radio" value="3">
+										<label for="frequency3" class="radio-btn btn-theme-border">Once every month</label>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="text-center">
+								<h4>Select an answer to reveal your<br><strong>Camping Leve</strong>l</h4>
+							</div>
+
+							<div class="progress-camp">
+								<div class="step-camp">
+									<img src="<?=base_url()?>assets/images/level-rookie.png">
+								</div>
+								<div class="line-camp"></div>
+								<div class="step-camp">
+									<div class="place-rectangle">?</div>
+								</div>
+								<div class="line-camp"></div>
+								<div class="step-camp">
+									<div class="place-pentagon">?</div>
+								</div>
+							</div>
+
+							<h5 class="text-center">Achievements</h5>
+							<div class="card-success">
+								<div>
+									<i class="fa fa-lock"></i>
+								</div>
+								<div>
+									<h4>Beginner</h4>
+									<p>New to camping and learning  basics of setting up, staying safe, and enjoying the outdoors.</p>
+								</div>
+							</div>
+
+							<div class="card-footer">
+
+								<div class="form-group d-flex justify-content-between">
+									<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
+									<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+								</div>
+							</div>
+
+
+						</fieldset>	
+						
+						<fieldset class="wizard-fieldset mt-3 in-active">
+
+							<div class="text-center">
+								<h2 class="mb-3">Your Camping Level</h2>
+								<p class="h1">Confident Camper</p>
+								<img src="<?=base_url(); ?>assets/images/confident-time-bear.png" width="200">
+							</div>
+
+							<div class="progress-camp">
+								<div class="step-camp">
+									<img src="<?=base_url()?>assets/images/level-rookie.png">
+								</div>
+								<div class="line-camp"></div>
+								<div class="step-camp">
+									<img src="<?=base_url()?>assets/images/level-confident.png">
+								</div>
+								<div class="line-camp"></div>
+								<div class="step-camp">
+									<div class="place-pentagon">?</div>
+								</div>
+							</div>
+
+							<h5 class="text-center">Achievements</h5>
+							<div class="card-success">
+								<div>
+									<img src="<?=base_url()?>assets/images/level.png">
+								</div>
+								<div>
+									<h4>Confident</h4>
+									<p>Comfortable with planning trips, setting up camp, and handling common outdoor situations independently.</p>
+								</div>
+							</div>
+
+							<div class="card-footer">
+
+								<div class="form-group d-flex justify-content-between">
+									<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
+									<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+								</div>
+							</div>
+
+
+						</fieldset>	
+
+						<fieldset class="wizard-fieldset mt-3">
 							<h2 class="text-center mb-5">Add Your Reservation Details</h2>
 							<div class="form-group">
-								<input type="date" class="form-control wizard-required" id="date" name="date" value="<?php echo date('Y-m-d'); ?>">
+								<input type="date" class="form-control" id="date" name="date" value="<?php echo date('Y-m-d'); ?>">
 								<label for="date" class="wizard-form-text-label label-clicked">Date</label>
-								<div class="wizard-form-error"></div>
 							</div>
 							<div class="form-group">
-								<input type="text" name="park" class="form-control wizard-required" id="park" required>
+								<input type="text" name="park" class="form-control" id="park">
 								<label for="park" class="wizard-form-text-label">Park</label>
-								<div class="wizard-form-error"></div>
 							</div>
 							<div class="form-group">
-								<input type="time" name="time" class="form-control wizard-required" id="time" value="<?php echo date('h:i'); ?>">
+								<input type="time" name="time" class="form-control" id="time" value="<?php echo date('h:i'); ?>">
 								<label for="time" class="wizard-form-text-label label-clicked">Time</label>
-								<div class="wizard-form-error"></div>
 							</div>
-							<div class="form-group clearfix d-flex justify-content-center gap-3">
-								<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
-								<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+
+							<div class="text-center mt-5">
+								<h6 class="mb-4">Excited to see you soon!</h6>
+								<img src="<?=base_url()?>assets/images/reservation.png" class="img-fluid mb-80">
 							</div>
+
+							<div class="card-footer">
+								<div class="form-group d-flex justify-content-between">
+									<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
+									<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+								</div>
+							</div>
+
 						</fieldset>	
-						<fieldset class="wizard-fieldset mt-5">
+
+						<fieldset class="wizard-fieldset mt-3">
 							<h2 class="text-center mb-3">Lets Help You Get Started!</h2>
 
 							<div class="wizard-title">
-								<i class="fa fa-user-plus"></i>
+								<i class="fa fa-user-plus font-20"></i>
 							</div>
 
 							<?php
@@ -132,31 +324,44 @@
 									
 								</div>
 
-							<?php }} ?>
-							
-							<div class="form-group clearfix d-flex justify-content-center gap-3">
-								<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
-								<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+							<?php }}else{ ?>
+								<h2>List not found!</h2>							
+							<?php } ?>							
+
+							<div class="card-footer">
+								<div class="form-group d-flex justify-content-between">
+									<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
+									<a href="javascript:;" class="form-wizard-next-btn float-right"><i class="fa fa-arrow-right"></i></a>
+								</div>
 							</div>
+
 						</fieldset>	
-						<fieldset class="wizard-fieldset mt-5 text-center wizard-equipped">
-							<h2 class="text-center mb-5">Lets Get you Equipped!!</h2>
 
-							<img src="<?=base_url('assets/images/owl.png'); ?>">
+						<fieldset class="wizard-fieldset mt-3 text-center wizard-equipped">
+							<h2 class="text-center mb-4">Lets Get you<br>Equipped!</h2>
+							
+							<div class="card-equipped">
+								<i class="fa fa-compass"></i>
 
-							<i class="fa fa-compass"></i>
-
-							<div class="wizard-newline">
-									<span>Explore our</span>
-									<span class="color-theme">Gear Guide</span>
-									<span>to pre-order</span>
-									<span>anything you need!</span>
+								<div class="wizard-newline">
+										<span>Explore our</span>
+										<span class="color-theme">Gear Guide</span>
+										<span>to pre-order</span>
+										<span>anything you need!</span>
+								</div>
 							</div>
 							
-							<div class="form-group clearfix d-flex justify-content-center gap-3">
-								<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
-								<a href="javascript:;" class="form-wizard-submit float-right" id="submitBooking"><i class="fa fa-check"></i></a>
+							<div class="bottom-left-circle"></div>
+
+							<!-- <img src="<?=base_url('assets/images/owl.png'); ?>"> -->
+
+							<div class="card-footer">
+								<div class="form-group d-flex justify-content-between">
+									<a href="javascript:;" class="form-wizard-previous-btn float-left"><i class="fa fa-arrow-left"></i></a>
+									<a href="javascript:;" class="form-wizard-submit float-right" id="submitBooking"><i class="fa fa-check"></i></a>
+								</div>
 							</div>
+
 						</fieldset>
 					</form>
 				</div>
@@ -164,6 +369,31 @@
 		</div>
 	</div>
 </section>
+
+<script>
+  $(document).ready(function () {
+    $('input[name="campstatus"]').change(function () {
+      const selectedValue = $('input[name="campstatus"]:checked').val();
+      const fieldsets = $('#bookingForm fieldset');
+
+      console.log("Selected value:", selectedValue);
+
+      if (selectedValue === "1") {
+        // No clicked: add 'in-active' to 2nd fieldset, remove from 3rd and 4th
+        fieldsets.eq(1).addClass('in-active');
+        fieldsets.eq(2).removeClass('in-active');
+        fieldsets.eq(3).removeClass('in-active');
+      } else {
+        // Yes clicked: add 'in-active' to 3rd and 4th, remove from 2nd
+        fieldsets.eq(1).removeClass('in-active');
+        fieldsets.eq(2).addClass('in-active');
+        fieldsets.eq(3).addClass('in-active');
+      }
+    });
+  });
+</script>
+
+
 
 <script>
 	$(document).ready(function(){
@@ -225,3 +455,4 @@
 		});
 	}
 </script>
+<script src="<?=base_url()?>assets/js/form-onboarding.js"></script>

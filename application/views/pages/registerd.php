@@ -14,9 +14,14 @@
 							<p class="mb-2">If you do not receive a verification email, please check your spam folder.</p>
 							<p class="mb-3">Also, please verify that you entered a valid email address in our sign-up form.
 							</p>
-							<h6 class="mb-3">If you need assistance, please contact us.</h6>
+							<!-- <h6 class="mb-3">If you need assistance, please contact us.</h6>
 							<div class="button">
 								<a href="<?=base_url('contact-us');?>" class="btn btn-success">Contact Us <span class="dir-part"></span></a>
+							</div> -->
+							
+							<!-- <h6 class="mb-3">If you need assistance, please contact us.</h6> -->
+							<div class="button">
+								<a href="<?=base_url('signin');?>" class="btn-theme">Sign In <span class="dir-part"></span></a>
 							</div>
 						</div>
 					</div>
